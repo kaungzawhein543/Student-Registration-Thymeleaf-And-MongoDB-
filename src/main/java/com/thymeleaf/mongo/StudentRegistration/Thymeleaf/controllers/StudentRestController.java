@@ -1,22 +1,17 @@
 package com.thymeleaf.mongo.StudentRegistration.Thymeleaf.controllers;
 
-
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Students;
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.services.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.List;
 
-@Controller
+@RestController
 @SuppressWarnings("unused")
-public class StudentController {
-
+@RequestMapping("/api/v1/students/")
+public class StudentRestController {
 
     // STUDENT SERVICE
     private final StudentService studentService;
@@ -24,7 +19,7 @@ public class StudentController {
     // GET LOGGER
     private static final Logger logger = LoggerFactory.getLogger(StudentRestController.class);
 
-    public StudentController(StudentService studentService) {
+    public StudentRestController(StudentService studentService) {
         this.studentService = studentService;
     }
 
@@ -51,11 +46,5 @@ public class StudentController {
     @DeleteMapping
     public void deleteStudent(@RequestParam("id") String id) {
         studentService.deleteStudent(id);
-    }
-
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception e) {
-        return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
