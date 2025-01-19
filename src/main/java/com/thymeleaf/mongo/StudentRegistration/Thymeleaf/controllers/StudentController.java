@@ -15,6 +15,7 @@ import java.util.List;
 
 @Controller
 @SuppressWarnings("unused")
+@RequestMapping("api/v2/students")
 public class StudentController {
 
 
@@ -26,6 +27,11 @@ public class StudentController {
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
+    }
+
+    // HOME PAGE
+    public String homePage() {
+        return "index";
     }
 
     // ADD STUDENT
