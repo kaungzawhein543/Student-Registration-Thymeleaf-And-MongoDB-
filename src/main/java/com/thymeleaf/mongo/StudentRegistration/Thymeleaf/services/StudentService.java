@@ -5,12 +5,14 @@ import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.repositories.StudentRep
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @SuppressWarnings("unused")
 @Slf4j
+@Service
 public class StudentService {
 
     // STUDENT REPOSITORY
@@ -23,7 +25,7 @@ public class StudentService {
         this.studentRepository = studentRepository;
     }
 
-    // ADD STUDENTS
+    // ADD STUDENT
     public Students addStudent(Students student) {
         return  studentRepository.save(student);
     }
@@ -34,11 +36,11 @@ public class StudentService {
     }
 
     // UPDATE STUDENT WITH ID
-    public void updateStudent(Students student) {
+    public Students updateStudent(Students student) {
         Optional<Students> studentFromDb =  studentRepository.findById(student.getId());
 
         if(studentFromDb.isPresent()) {
-             studentRepository.save(student);
+             return studentRepository.save(student);
         }else {
             logger.error("STUDENT NOT FOUND ERROR IN SERVICE CLASS IN UPDATE METHOD");
             throw new RuntimeException("Student Not Found");
@@ -46,7 +48,7 @@ public class StudentService {
     }
 
     // DELETE STUDENT WITH ID
-    public void deleteStudent(int id) {
+    public void deleteStudent(String id) {
         studentRepository.deleteById(id);
     }
 }
