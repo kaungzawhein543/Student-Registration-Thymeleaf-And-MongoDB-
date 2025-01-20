@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar Fragment</title>
+    <style>
+        * {
+          margin: 0;
+        }
+        ul > li ,header{
+          display: inline;
+          margin: 0 10px;
+          padding: 20px;
+        }
+        header {
+          font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    <div th:fragment="navigationFragment">
-        <ul style="list-style-type: none;">
+    <div style="display: flex;justify-content: space-between; background-color:antiquewhite;">
+        <header>Student Registration</header>
+        <ul style="list-style-type: none;display:flex;justify-content: flex-end;margin: 0;">
             <li><a href="/api/v2/students/add/">Add student</a></li>
             <li><a href="/api/v2/students/update/">Update student</a></li>
             <li><a href="/api/v2/students/getStudentById/">Add student</a></li>
