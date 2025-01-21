@@ -20,34 +20,33 @@ import java.util.Map;
 
 @Controller
 @SuppressWarnings("unused")
-@RequestMapping("api/v2/students")
+@RequestMapping("/students")
 public class StudentController {
 
 
     // STUDENT SERVICE
     private final StudentService studentService;
 
-    // GET LOGGER
-    private static final Logger logger = LoggerFactory.getLogger(StudentRestController.class);
+    private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
 
-    // HOME PAGE
+    @GetMapping
     public String homePage() {
         return "index";
     }
 
     // ADD STUDENT ROUTE
-    @GetMapping("add")
+    @GetMapping("/addStudent")
     public String addStudentRoute(Model m) {
         m.addAttribute("student", new Students());
-        return  "addStudent";
+        return "addStudent";
     }
 
     // ADD STUDENT DATA
-    @PostMapping("add")
+    @PostMapping("/add")
     public String addStudentForm(@RequestBody Students student, Model m) {
         m.addAttribute("message", "Add Student Successfully.");
         return  "addStudent";
@@ -86,5 +85,13 @@ public class StudentController {
         errorDetails.put("message", e.getMessage());
         errorDetails.put("path", request.getRequestURI());
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @GetMapping("/test")
+
+    public String test() {
+
+        return "index"; // Ensure you have an index.html in your templates
+
     }
 }
