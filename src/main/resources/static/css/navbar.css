@@ -5,8 +5,4 @@ ul > li , header{
   display: inline;
   margin: 0 10px;
   padding: 20px;
-  background-color : red;
-}
-header {
-    color: red;
 }

@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student</title>
     <link rel="stylesheet" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" th:href="@{/css/addStudent.css}">
 </head>
 <body>
     <div th:replace="fragments/navbar :: navigationFragment"></div>
-    <form th:action="@{/students/add}" th:object="${student}">
-        <div>
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Enter your Name" th:field="*{name}">
-        </div>
-        <div>
-            <label for="name">Birth Of Date</label>
-            <input type="text" id="bithOfdate" th:fiel="*{brith_of_date}">
-        </div>
-    </form>
+    <div class="container">
+        <form th:action="@{/students/add}" th:object="${student}">
+            <div style="text-align: center;">
+                <h3>Add Student Form</h3>
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your Name" th:field="*{name}">
+            </div>
+            <div>
+                <label for="name">Birth Of Date</label>
+                <input type="date" id="bithOfdate" th:fiel="*{brith_of_date}">
+            </div>
+
+            <button type="submit" class="subtmitbtn">Add Student</button>
+        </form>
+    </div>
 </body>
 </html>
