@@ -46,4 +46,14 @@ public class Students {
     public void setClass_id(int class_id) {
         this.class_id = class_id;
     }
+
+    @Override
+    public String toString() {
+        return "Students{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", brith_of_date='" + brith_of_date + '\'' +
+                ", class_id=" + class_id +
+                '}';
+    }
 }

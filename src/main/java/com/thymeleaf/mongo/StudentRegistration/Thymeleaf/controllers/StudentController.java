@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -47,9 +48,11 @@ public class StudentController {
 
     // ADD STUDENT DATA
     @PostMapping("/add")
-    public String addStudentForm(@RequestBody Students student, Model m) {
-        m.addAttribute("message", "Add Student Successfully.");
-        return  "addStudent";
+    public String addStudentForm(@ModelAttribute Students student, RedirectAttributes redirectAttributes) {
+//      studentService.addStudent(student);
+        System.out.println(student.toString());
+        redirectAttributes.addFlashAttribute("message", "Add Student Successfully.");
+        return  "redirect:/students/addStudent";
     }
 
     // GET ALL STUDENTS

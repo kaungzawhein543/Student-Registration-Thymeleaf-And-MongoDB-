@@ -10,7 +10,8 @@
 <body>
     <div th:replace="fragments/navbar :: navigationFragment"></div>
     <div class="container">
-        <form th:action="@{/students/add}" th:object="${student}">
+        <span th:if="${message}" th:text="${message}" class="msg"></span>
+        <form th:action="@{/students/add}" th:object="${student}" method="post">
             <div style="text-align: center;">
                 <h3>Add Student Form</h3>
             </div>
@@ -20,7 +21,7 @@
             </div>
             <div>
                 <label for="name">Birth Of Date</label>
-                <input type="date" id="bithOfdate" th:fiel="*{brith_of_date}">
+                <input type="date" id="bithOfdate" th:field="*{brith_of_date}">
             </div>
 
             <button type="submit" class="subtmitbtn">Add Student</button>

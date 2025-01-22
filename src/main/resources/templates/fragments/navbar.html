@@ -6,7 +6,7 @@
     <title>Navbar Fragment</title>
 </head>
 <body>
-    <div th:fragment="navigationFragment" style="display: flex;justify-content: space-between; background-color:antiquewhite;">
+    <div class="navbar-container" th:fragment="navigationFragment" style="display: flex;justify-content: space-between;">
         <header style="cursor: pointer;" onclick="window.location.href='/students'">Student Registration</header>
         <ul style="list-style-type: none;display:flex;justify-content: flex-end;margin: 0;">
             <li><a href="/students/addStudent">Add student</a></li>
