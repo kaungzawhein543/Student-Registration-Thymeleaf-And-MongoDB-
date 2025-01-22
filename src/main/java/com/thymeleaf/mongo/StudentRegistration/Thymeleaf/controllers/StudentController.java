@@ -43,8 +43,7 @@ public class StudentController {
     // ADD STUDENT DATA
     @PostMapping("/add")
     public String addStudentForm(@ModelAttribute Students student, RedirectAttributes redirectAttributes) {
-//      studentService.addStudent(student);
-        System.out.println(student.toString());
+        studentService.addStudent(student);
         redirectAttributes.addFlashAttribute("message", "Add Student Successfully.");
         return  "redirect:/students/addStudent";
     }

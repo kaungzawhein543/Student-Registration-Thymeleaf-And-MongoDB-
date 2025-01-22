@@ -5,6 +5,8 @@ import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.repositories.StudentRep
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,17 +19,25 @@ public class StudentService {
 
     // STUDENT REPOSITORY
     private final StudentRepository studentRepository;
+    private final MongoTemplate atlasMongoTemplate;
+    private final MongoTemplate localMongoTemplate;
 
     // GET LOGGER
     private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
 
-    public StudentService(StudentRepository studentRepository) {
+    public StudentService(StudentRepository studentRepository,
+                          @Qualifier("atlasMongoTemplate") MongoTemplate atlasMongoTemplate,
+                          @Qualifier("localMongoTemplate") MongoTemplate localMongoTemplate) {
         this.studentRepository = studentRepository;
+        this.atlasMongoTemplate = atlasMongoTemplate;
+        this.localMongoTemplate = localMongoTemplate;
     }
 
     // ADD STUDENT
     public Students addStudent(Students student) {
-        return  studentRepository.save(student);
+        Students resultStudentAtlas = atlasMongoTemplate.save(student, "students");
+        Students resultStudentLocal = localMongoTemplate.save(student, "students");
+        return  new Students();
     }
 
     // GET ALL STUDENTS
