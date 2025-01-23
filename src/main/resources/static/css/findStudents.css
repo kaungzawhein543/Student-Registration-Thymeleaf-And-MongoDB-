@@ -9,15 +9,26 @@
 .container form > input{
     padding : 13px;
     border : 1px solid black;
-    border-radius : 4px;
+    border-radius : 6px;
     width: 300px;
 }
 .container form > input:focus {
-   border: 1px solid blue;
+   border: 1px solid #7086ff;
 }
 .submitButton {
-    padding : 8px 20px;
+    padding : 10px 20px;
     color : white;
     border-radius : 5px;
-    background-color : blue;
+    background-color : #2443f0;
+    cursor :pointer;
+}
+table {
+    width: 100%
+}
+thead , tbody {
+    display : flex;
+    justify-content : space-between;
+}
+table, th, td {
+    border : 1px solid black;
 }

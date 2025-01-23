@@ -50,22 +50,26 @@ public class StudentController {
     }
 
     @RequestMapping(value = "/findStudents", method = RequestMethod.GET)
-    public String goFindStudentRoute() {
+    public String goFindStudentRoute(Model model) {
+        // Flash attributes automatically populate the model on redirect
+        if (model.containsAttribute("students")) {
+            model.addAttribute("students", model.getAttribute("students"));
+        }
         return "findStudent";
     }
 
     // GET ALL STUDENTS
     @PostMapping("/all")
-    public String getAllStudents(@RequestParam String name, RedirectAttributes redirectAttributes,Model m) {
+    public String getAllStudents(@RequestParam String name, RedirectAttributes redirectAttributes) {
         if (name == null || name.isEmpty()) {
-            m.addAttribute("message", "Input Can't Be Null Or Empty");
-            return "findStudent";
-//           throw new RuntimeException("Input Can't Be Null Or Empty");
+            redirectAttributes.addFlashAttribute("message", "Input Can't Be Null Or Empty");
+            return "redirect:/students/findStudents";
         }
         List<Students> students = studentService.getStudentsByName(name);
-        m.addAttribute("students" , students);
+        redirectAttributes.addFlashAttribute("students", students);
         return "redirect:/students/findStudents";
     }
+
 
 
 

@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends MongoRepository<Students, String> {
 
-    @Query("{ 'name' : ?0 }")
+    @Query(value = "{ 'name' : ?0 }", collation = "en")
     List<Students> findByName(String name);
 }

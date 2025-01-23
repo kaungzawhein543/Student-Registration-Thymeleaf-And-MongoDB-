@@ -11,3 +11,6 @@ ul > li , header{
   margin:0;
   background-color : #d4d4d4;
 }
+header {
+    font-size :30px;
+}
