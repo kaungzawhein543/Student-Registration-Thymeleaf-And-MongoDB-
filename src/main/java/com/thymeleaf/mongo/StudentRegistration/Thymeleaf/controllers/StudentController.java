@@ -40,6 +40,7 @@ public class StudentController {
         return "addStudent";
     }
 
+
     // ADD STUDENT DATA
     @PostMapping("/add")
     public String addStudentForm(@ModelAttribute Students student, RedirectAttributes redirectAttributes) {
@@ -49,10 +50,19 @@ public class StudentController {
     }
 
     // GET ALL STUDENTS
-    @GetMapping("/all")
-    public List<Students> getAllStudents() {
-        return studentService.getAllStudents();
+    @PostMapping("/all")
+    public String getAllStudents(@RequestParam String name, RedirectAttributes redirectAttributes,Model m) {
+        if (name == null || name.isEmpty()) {
+            m.addAttribute("message", "Input Can't Be Null Or Empty");
+            return "findStudent";
+//           throw new RuntimeException("Input Can't Be Null Or Empty");
+        }
+        List<Students> students = studentService.getStudentsByName(name);
+        m.addAttribute("students" , students);
+        return "redirect:/students/findStudents";
     }
+
+
 
     // UPDATE STUDENT WITH ID
     @PostMapping("/update")

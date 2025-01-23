@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Students</title>
+    <link rel="stylesheet" th:href="@{css/navbar.css}">
+</head>
+<body>
+    <div th:replace="fragments/navbar :: navigationFragment"></div>
+    <div>
+        <h1>Find Student By Name</h1>
+        <div>
+            <form th:action="@{/students/all}" method="post">
+                <input type="text" id="name" placeholder="Enter Student Name"/>
+                <button class="submitButton" type="submit">Find Student</button>
+            </form>
+            <div th:if="${students}">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>BIRTH OF DATE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr th:each="${student : students}">
+                             <td th:text="${id}"></td>
+                             <td th:text="${name}"></td>
+                             <td th:text="${brith_of_date}"></td>
+                         </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
