@@ -19,15 +19,15 @@ public class StudentService {
 
     // STUDENT REPOSITORY
     private final StudentRepository studentRepository;
-    private final MongoTemplate atlasMongoTemplate;
+//    private final MongoTemplate atlasMongoTemplate;
 
     // GET LOGGER
     private static final Logger logger = LoggerFactory.getLogger(StudentService.class);
 
-    public StudentService(StudentRepository studentRepository,
-                          @Qualifier("atlasMongoTemplate") MongoTemplate atlasMongoTemplate) {
+    public StudentService(StudentRepository studentRepository
+                         /* @Qualifier("atlasMongoTemplate") MongoTemplate atlasMongoTemplate*/) {
         this.studentRepository = studentRepository;
-        this.atlasMongoTemplate = atlasMongoTemplate;
+//        this.atlasMongoTemplate = atlasMongoTemplate;
     }
 
     // ADD STUDENT

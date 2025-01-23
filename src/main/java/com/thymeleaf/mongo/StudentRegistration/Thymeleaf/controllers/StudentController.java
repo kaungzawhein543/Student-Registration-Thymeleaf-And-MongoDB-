@@ -49,6 +49,11 @@ public class StudentController {
         return  "redirect:/students/addStudent";
     }
 
+    @RequestMapping(value = "/findStudents", method = RequestMethod.GET)
+    public String goFindStudentRoute() {
+        return "findStudent";
+    }
+
     // GET ALL STUDENTS
     @PostMapping("/all")
     public String getAllStudents(@RequestParam String name, RedirectAttributes redirectAttributes,Model m) {

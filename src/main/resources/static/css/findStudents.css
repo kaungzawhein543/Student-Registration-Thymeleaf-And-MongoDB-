@@ -1,0 +1,23 @@
+.container {
+    display :flex;
+    justify-content: center;
+    flex-direction : column;
+    height : 80%;
+    align-items : center;
+    gap : 20px;
+}
+.container form > input{
+    padding : 13px;
+    border : 1px solid black;
+    border-radius : 4px;
+    width: 300px;
+}
+.container form > input:focus {
+   border: 1px solid blue;
+}
+.submitButton {
+    padding : 8px 20px;
+    color : white;
+    border-radius : 5px;
+    background-color : blue;
+}

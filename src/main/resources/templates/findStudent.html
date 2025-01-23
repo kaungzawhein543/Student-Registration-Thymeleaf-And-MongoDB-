@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Students</title>
-    <link rel="stylesheet" th:href="@{css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/findStudents.css}">
 </head>
 <body>
     <div th:replace="fragments/navbar :: navigationFragment"></div>
-    <div>
+    <div class="container">
         <h1>Find Student By Name</h1>
         <div>
             <form th:action="@{/students/all}" method="post">
