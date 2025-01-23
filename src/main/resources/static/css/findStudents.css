@@ -5,6 +5,7 @@
     height : 80%;
     align-items : center;
     gap : 20px;
+    width: 100%;
 }
 .container form > input{
     padding : 13px;
@@ -25,10 +26,7 @@
 table {
     width: 100%
 }
-thead , tbody {
-    display : flex;
-    justify-content : space-between;
-}
+
 table, th, td {
     border : 1px solid black;
 }

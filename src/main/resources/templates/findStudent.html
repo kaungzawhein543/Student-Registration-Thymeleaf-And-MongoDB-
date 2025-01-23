@@ -11,7 +11,7 @@
     <div th:replace="fragments/navbar :: navigationFragment"></div>
     <div class="container">
         <h1>Find Student By Name</h1>
-        <div>
+        <div class="sub-container">
             <form th:action="@{/students/all}" method="post">
                 <input type="text" id="name" name="name" placeholder="Enter Student Name"/>
                 <button class="submitButton" type="submit">Find Student</button>
