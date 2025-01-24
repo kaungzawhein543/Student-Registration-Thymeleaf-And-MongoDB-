@@ -28,7 +28,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="student,str : ${students}">
-                    <td th:id="'row-' + ${str.index}" th:text="${str.index}"></td>
+                    <td th:id="'row-' + (${str.index + 1})" th:text="${str.index + 1}"></td>
                     <td th:text="${student.name}"></td>
                     <td th:text="${student.brith_of_date}"></td>
                 </tr>
