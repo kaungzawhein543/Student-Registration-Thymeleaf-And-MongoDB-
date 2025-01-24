@@ -28,12 +28,19 @@ table {
 }
 .sub-container {
     display: flex;
-    width: 100%;
-    justify-content : space-between;
+    width: 80%;
+    justify-content : space-around;
     padding: 5px;
+    margin : 0 auto;
 }
 table tr {
     text-align : center;
+}
+table td,th {
+    padding : 10px;
+}
+table tr:nth-child(2n) {
+    background-color : #bfbfbf;
 }
 table thead > tr {
     background-color : black;
