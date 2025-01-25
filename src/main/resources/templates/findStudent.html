@@ -13,7 +13,7 @@
         <h1>Find Student By Name</h1>
         <div>
             <form th:action="@{/students/all}" method="post">
-                <input type="text" id="name" name="name" placeholder="Enter Student Name"/>
+                    <input type="text" id="name" name="name" placeholder="Enter Student Name"/>
                 <button class="submitButton" type="submit">Find Student</button>
             </form>
         </div>
@@ -24,6 +24,7 @@
                     <th>ID</th>
                     <th>NAME</th>
                     <th>BIRTH OF DATE</th>
+                    <th>ACTIONS</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,10 +32,12 @@
                     <td th:id="'row-' + (${str.index + 1})" th:text="${str.index + 1}"></td>
                     <td th:text="${student.name}"></td>
                     <td th:text="${student.brith_of_date}"></td>
+                    <td><a class="action_button" id="dleBtn" th:href="@{/students/deleteStudent/{id}(id=${student.id})}">Delete</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
+    <script th:src="@{/js/findStudent.js}"></script>
 </body>
 </html>

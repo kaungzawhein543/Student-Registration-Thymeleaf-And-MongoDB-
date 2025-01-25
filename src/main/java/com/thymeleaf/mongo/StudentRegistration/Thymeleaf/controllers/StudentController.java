@@ -80,9 +80,9 @@ public class StudentController {
     }
 
     // DELETE STUDENT WITH ID
-    @DeleteMapping
-    public void deleteStudent(@RequestParam("id") String id) {
-        studentService.deleteStudent(id);
+    @GetMapping("deleteStudent/{studentId}")
+    public void deleteStudent(@PathVariable("studentId") String studentId) {
+        studentService.deleteStudent(studentId);
     }
 
     @GetMapping("/error")

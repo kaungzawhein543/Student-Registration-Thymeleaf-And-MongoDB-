@@ -46,3 +46,18 @@ table thead > tr {
     background-color : black;
     color : white;
 }
+.action_button {
+    padding: 5px 20px;
+    background-color : #cc1b2f;
+    color :white;
+    border : none;
+    cursor : pointer;
+    border-radius : 5px;
+    text-decoration : none;
+}
+.action_button:hover {
+    background-color : #9e2331;
+}
+table td:last-child {
+    with: 100%;
+}

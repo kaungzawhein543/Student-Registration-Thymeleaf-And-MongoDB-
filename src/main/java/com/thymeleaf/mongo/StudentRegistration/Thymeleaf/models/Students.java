@@ -3,6 +3,7 @@ package com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 
 @NoArgsConstructor
@@ -14,6 +15,8 @@ public class Students {
     private String name;
     private String brith_of_date;
     private int class_id;
+    @Field("locale")  // Ensure this field is mapped correctly
+    private String locale;
 
     public String getId() {
         return id;
@@ -45,6 +48,14 @@ public class Students {
 
     public void setClass_id(int class_id) {
         this.class_id = class_id;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
 
     @Override
