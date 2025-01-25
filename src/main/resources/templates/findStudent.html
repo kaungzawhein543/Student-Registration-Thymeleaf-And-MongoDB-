@@ -32,8 +32,7 @@
                     <td th:id="'row-' + (${str.index + 1})" th:text="${str.index + 1}"></td>
                     <td th:text="${student.name}"></td>
                     <td th:text="${student.brith_of_date}"></td>
-                    <td><a class="action_button" id="dleBtn" th:href="@{/students/deleteStudent/{id}(id=${student.id})}">Delete</a></td>
-                </tr>
+                    <td><a class="action_button" id="dleBtn" th:href="@{/students/deleteStudent/{id}/{name}(id=${student.id}, name=${student.name})}">Delete</a></td>                </tr>
                 </tbody>
             </table>
         </div>

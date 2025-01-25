@@ -60,7 +60,7 @@ public class StudentController {
 
     // GET ALL STUDENTS
     @PostMapping("/all")
-    public String getAllStudents(@RequestParam String name, RedirectAttributes redirectAttributes) {
+    public String getAllStudents(@RequestParam String name, RedirectAttributes redirectAttributes, Model m) {
         if (name == null || name.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Input Can't Be Null Or Empty");
             return "redirect:/students/findStudents";
@@ -80,9 +80,13 @@ public class StudentController {
     }
 
     // DELETE STUDENT WITH ID
-    @GetMapping("deleteStudent/{studentId}")
-    public void deleteStudent(@PathVariable("studentId") String studentId) {
+    @GetMapping("deleteStudent/{studentId}/{studentName}")
+    public String deleteStudent(@PathVariable("studentId") String studentId,@PathVariable("studentName") String studentName,RedirectAttributes redirectAttributes) {
         studentService.deleteStudent(studentId);
+        System.out.println(studentId);
+        List<Students> students = studentService.getStudentsByName(studentName);
+        redirectAttributes.addFlashAttribute("students", students);
+        return "redirect:/students/findStudents";
     }
 
     @GetMapping("/error")
