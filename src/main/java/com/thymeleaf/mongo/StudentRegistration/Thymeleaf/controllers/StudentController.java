@@ -1,7 +1,7 @@
 package com.thymeleaf.mongo.StudentRegistration.Thymeleaf.controllers;
 
 
-import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Students;
+import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Student;
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.services.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,14 +36,14 @@ public class StudentController {
     // ADD STUDENT ROUTE
     @GetMapping("/addStudent")
     public String addStudentRoute(Model m) {
-        m.addAttribute("student", new Students());
+        m.addAttribute("student", new Student());
         return "addStudent";
     }
 
 
     // ADD STUDENT DATA
     @PostMapping("/add")
-    public String addStudentForm(@ModelAttribute Students student, RedirectAttributes redirectAttributes) {
+    public String addStudentForm(@ModelAttribute Student student, RedirectAttributes redirectAttributes) {
         studentService.addStudent(student);
         redirectAttributes.addFlashAttribute("message", "Add Student Successfully.");
         return  "redirect:/students/addStudent";
@@ -65,7 +65,7 @@ public class StudentController {
             redirectAttributes.addFlashAttribute("message", "Input Can't Be Null Or Empty");
             return "redirect:/students/findStudents";
         }
-        List<Students> students = studentService.getStudentsByName(name);
+        List<Student> students = studentService.getStudentsByName(name);
         redirectAttributes.addFlashAttribute("students", students);
         return "redirect:/students/findStudents";
     }
@@ -75,7 +75,7 @@ public class StudentController {
 
     // UPDATE STUDENT WITH ID
     @PostMapping("/update")
-    public Students updateStudent(@RequestBody Students student) {
+    public Student updateStudent(@RequestBody Student student) {
         return studentService.updateStudent(student);
     }
 
@@ -84,7 +84,7 @@ public class StudentController {
     public String deleteStudent(@PathVariable("studentId") String studentId,@PathVariable("studentName") String studentName,RedirectAttributes redirectAttributes) {
         studentService.deleteStudent(studentId);
         System.out.println(studentId);
-        List<Students> students = studentService.getStudentsByName(studentName);
+        List<Student> students = studentService.getStudentsByName(studentName);
         redirectAttributes.addFlashAttribute("students", students);
         return "redirect:/students/findStudents";
     }
