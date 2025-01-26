@@ -4,6 +4,7 @@ import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Class;
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.services.ClassService;
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.services.StudentService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,13 @@ public class ClassController {
     @PostMapping("add")
     public Class save(@ModelAttribute Class classObj) {
         return  classService.save(classObj);
+    }
+
+    // ADD CLASS FILE ROUTE
+    @GetMapping("addClass")
+    public String save(Model m) {
+        m.addAttribute("class", new Class());
+        return "addClass";
     }
 
     // GET ALL CLASS

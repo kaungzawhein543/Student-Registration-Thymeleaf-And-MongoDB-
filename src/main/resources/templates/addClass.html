@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/addStudent.css}">
 </head>
 <body>
-    <div th:replace="fragements/navbar :: navigationFragment"></div>
+    <div th:replace="fragments/navbar :: navigationFragment"></div>
     <div class="container">
         <span th:if="${message}" th:text="${message}" class="msg"></span>
         <form th:action="@{/classes/add}" th:object="${class}" method="post">
