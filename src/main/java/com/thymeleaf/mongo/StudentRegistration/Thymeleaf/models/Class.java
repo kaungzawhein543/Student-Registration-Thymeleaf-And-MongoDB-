@@ -3,6 +3,7 @@ package com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.sql.Timestamp;
@@ -12,6 +13,9 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Class {
+
+    @Id
+    private String id;
     private String name;
     private Timestamp startTime;
     private Timestamp endTime;
