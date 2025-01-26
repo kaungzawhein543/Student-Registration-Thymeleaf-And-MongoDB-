@@ -23,8 +23,9 @@ public class ClassController {
 
     // ADD CLASS
     @PostMapping("add")
-    public Class save(@ModelAttribute Class classObj) {
-        return  classService.save(classObj);
+    public String save(@ModelAttribute Class classObj) {
+          classService.save(classObj);
+          return "redirect:/classes/addClass";
     }
 
     // ADD CLASS FILE ROUTE
