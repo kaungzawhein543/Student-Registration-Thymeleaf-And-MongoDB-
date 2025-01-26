@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Class</title>
+</head>
+<body>
+    <div th:replace="fragements/navbar :: navigationFragment"></div>
+    <div class="container">
+        <span th:if="${message}" th:text="${message}" class="msg"></span>
+        <form th:action="@{/classes/add}" th:object="${class}" method="post">
+            <div style="text-align: center;">
+                <h3>Add Class Form</h3>
+            </div>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your Name" th:field="*{name}">
+            </div>
+            <div>
+                <label for="startTime">Start Time Of Class</label>
+                <input type="time" id="startTime" th:field="*{startTime}">
+            </div>
+            <div>
+                <label for="endTime">End Time Of Class</label>
+                <input type="time" id="endTime" th:field="*{endTime}">
+            </div>
+
+            <button type="submit" class="subtmitbtn">Add Student</button>
+        </form>
+    </div>
+</body>
+</html>
