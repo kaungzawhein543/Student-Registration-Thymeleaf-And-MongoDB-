@@ -1,7 +1,6 @@
 package com.thymeleaf.mongo.StudentRegistration.Thymeleaf.services;
 
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Class;
-import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Student;
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.repositories.ClassRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +18,17 @@ public class ClassService {
     }
 
     // ADD CLASS
-    public Class addClass(Class classObj) {
+    public Class save(Class classObj) {
         return  classRepository.save(classObj);
     }
 
     // GET ALL CLASS
-    public List<Class> getAllClass() {
+    public List<Class> findAll() {
         return classRepository.findAll();
     }
 
     // DELETE CLASS WITH ID
-    public void deleteClass(String id) {
+    public void deleteById(String id) {
         classRepository.deleteById(id);
     }
 
