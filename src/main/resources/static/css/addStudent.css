@@ -89,3 +89,13 @@ input:focus {
     color : white;
     margin-bottom : 10px;
 }
+.errmsg {
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a 3D effect */
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    background-color: #3655b3;
+    color : white;
+    margin-bottom : 10px;
+}
