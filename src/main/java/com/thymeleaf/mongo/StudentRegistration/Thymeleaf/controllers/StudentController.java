@@ -1,7 +1,9 @@
 package com.thymeleaf.mongo.StudentRegistration.Thymeleaf.controllers;
 
 
+import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Class;
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.models.Student;
+import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.services.ClassService;
 import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.services.StudentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,13 +21,15 @@ import java.util.List;
 public class StudentController {
 
 
-    // STUDENT SERVICE
+    //  SERVICES
     private final StudentService studentService;
+    private final ClassService classService;
 
     private static final Logger logger = LoggerFactory.getLogger(StudentController.class);
 
-    public StudentController(StudentService studentService) {
+    public StudentController(StudentService studentService, ClassService classService) {
         this.studentService = studentService;
+        this.classService = classService;
     }
 
     @GetMapping
@@ -37,6 +41,10 @@ public class StudentController {
     @GetMapping("/addStudent")
     public String addStudentRoute(Model m) {
         m.addAttribute("student", new Student());
+        List<Class> classes = classService.findAll();
+        if (!classes.isEmpty()) {
+            m.addAttribute("classes",classes);
+        }
         return "addStudent";
     }
 
