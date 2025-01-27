@@ -1,8 +1,9 @@
 html, body {
     height: 100%;
     margin: 0;
+    color :white;
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4; /* Light gray background */
+    background-color: #1a1a1a; /* Light gray background */
 }
 
 .container {
@@ -16,13 +17,13 @@ html, body {
 }
 
 .container > form {
-    background-color: #ffffff; /* White background for the form */
+    background-color: #0d0d0d; /* White background for the form */
     padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a 3D effect */
     border-radius: 8px;
     width: 100%;
     max-width: 400px; /* Limit the form width */
-    color: #333;
+    color: white;
 }
 
 form > div {
@@ -34,7 +35,7 @@ form > div {
 
 form h3 {
     text-align: center;
-    color: #333;
+    color: white;
     margin-bottom: 20px;
     font-size: 24px;
 }
@@ -42,7 +43,7 @@ form h3 {
 label {
     font-weight: bold;
     font-size: 16px;
-    color: #444;
+    color: white;
 }
 
 input {
@@ -50,6 +51,7 @@ input {
     font-size: 14px;
     border-radius: 6px;
     border: 1px solid #ddd;
+    color :black;
     width: 100%; /* Full width input fields */
     box-sizing: border-box;
 }

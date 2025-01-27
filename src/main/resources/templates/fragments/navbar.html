@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navbar Fragment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar-container" th:fragment="navigationFragment" style="display: flex;justify-content: space-between;">
-        <header style="cursor: pointer;" onclick="window.location.href='/students'">Student Registration</header>
-        <ul style="list-style-type: none;display:flex;justify-content: flex-end;margin: 0;">
-            <li><a href="/students/addStudent">Add student</a></li>
-            <li><a href="/students/update">Update student</a></li>
-            <li><a href="/students/findStudents">Find Students</a></li>
-            <li><a href="/students/deleteStudentById">Delete Students</a></li>
-        </ul>
-    </div>
+<div class="navbar-container" th:fragment="navigationFragment">
+    <header onclick="window.location.href='/students'">Student Portal</header>
+    <ul>
+        <li><a th:href="@{/students/addStudent}">Add Student</a></li>
+        <li><a th:href="@{/classes/addClass}">Add Class</a></li>
+        <li><a th:href="@{/students/findStudents}">Search</a></li>
+    </ul>
+</div>
 </body>
 </html>
