@@ -40,11 +40,12 @@ table td,th {
     padding : 10px;
 }
 table tr:nth-child(2n) {
-    background-color : #bfbfbf;
+    background-color : #363636;
+    color : white;
 }
+
 table thead > tr {
     background-color : black;
-    color : white;
 }
 .action_button {
     padding: 5px 20px;
