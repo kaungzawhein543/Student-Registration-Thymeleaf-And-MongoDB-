@@ -58,14 +58,21 @@ public class StudentController {
         return "findStudent";
     }
 
-    // GET ALL STUDENTS
-    @PostMapping("/all")
-    public String getAllStudents(@RequestParam String name, RedirectAttributes redirectAttributes, Model m) {
+    // GET ALL STUDENTS BY NAME
+    @PostMapping("/findByName")
+    public String getAllStudentsByName(@RequestParam String name, RedirectAttributes redirectAttributes, Model m) {
         if (name == null || name.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Input Can't Be Null Or Empty");
             return "redirect:/students/findStudents";
         }
         List<Student> students = studentService.getStudentsByName(name);
+        redirectAttributes.addFlashAttribute("students", students);
+        return "redirect:/students/findStudents";
+    }
+
+    @GetMapping("/findAll")
+    public String getAllStudents(RedirectAttributes redirectAttributes, Model m) {
+        List<Student> students = studentService.getAllStudents();
         redirectAttributes.addFlashAttribute("students", students);
         return "redirect:/students/findStudents";
     }

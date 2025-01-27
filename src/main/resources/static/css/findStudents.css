@@ -62,3 +62,17 @@ table thead > tr {
 table td:last-child {
     with: 100%;
 }
+.button_container {
+    display :flex;
+    flex-direction: row;
+    gap : 20px;
+}
+.findAllStu {
+    padding : 10px 20px;
+    font-size: 20px;
+    color : white;
+    border-radius : 5px;
+    background-color : #2443f0;
+    cursor :pointer;
+    text-decoration : none;
+}
