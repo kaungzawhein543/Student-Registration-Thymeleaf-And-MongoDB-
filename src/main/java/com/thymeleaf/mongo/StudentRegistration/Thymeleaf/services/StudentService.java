@@ -45,6 +45,11 @@ public class StudentService {
         return studentRepository.findByName(name);
     }
 
+    // GET STUDENTS BY ID
+    public Optional<Student> getStudentsByID(String id) {
+        return studentRepository.findById(id);
+    }
+
     // UPDATE STUDENT WITH ID
     public Student updateStudent(Student student) {
         Optional<Student> studentFromDb =  studentRepository.findById(student.getId());

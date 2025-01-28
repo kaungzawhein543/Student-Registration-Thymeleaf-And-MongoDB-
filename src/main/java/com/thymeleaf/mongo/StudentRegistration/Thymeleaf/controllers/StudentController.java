@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -88,9 +89,11 @@ public class StudentController {
 
 
     // UPDATE STUDENT WITH ID
-    @PostMapping("/update")
-    public Student updateStudent(@RequestBody Student student) {
-        return studentService.updateStudent(student);
+    @PostMapping("/updateStudent/{id}")
+    public String updateStudent(@RequestParam("id") String id,Model m) {
+        Optional<Student> studentForUpdate = studentService.getStudentsByID(id);
+        studentForUpdate.ifPresent(student -> m.addAttribute("student", student));
+        return "updateStudent";
     }
 
     // DELETE STUDENT WITH ID
