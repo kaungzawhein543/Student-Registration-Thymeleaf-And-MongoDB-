@@ -46,7 +46,7 @@ label {
     color: white;
 }
 
-input {
+input[type="text"] {
     padding: 12px;
     font-size: 14px;
     border-radius: 6px;
@@ -103,4 +103,16 @@ input:focus {
 }
 select {
     padding: 10px;
+}
+.checkboxes-container {
+    display: flex; /* Enable flexbox for the container */
+    flex-wrap: wrap; /* Allow wrapping if there are too many checkboxes */
+    gap: 10px; /* Add spacing between items */
+    margin: 10px 0;
+}
+
+.checkBoxClass {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }

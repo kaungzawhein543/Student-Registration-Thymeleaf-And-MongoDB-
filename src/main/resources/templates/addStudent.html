@@ -24,11 +24,15 @@
                 <input type="date" id="bithOfdate" th:field="*{brith_of_date}">
             </div>
             <div>
-                <label for="classes">Attend Classes</label>
-                <select id="classes" multiple th:field="*{classes}">
-                    <option th:each="class : ${classes}" th:value="${class.id}" th:text="${class.name}"></option>
-                </select>
+                <label>Attend Classes</label>
+                <div class="checkboxes-container">
+                    <div th:each="class : ${classes}" class="checkBoxClass">
+                        <input type="checkbox" th:id="${class.id}" th:value="${class.id}">
+                        <label th:for="${class.id}" th:text="${class.name}"></label>
+                    </div>
+                </div>
             </div>
+
             <button type="submit" class="subtmitbtn">Add Student</button>
         </form>
     </div>
