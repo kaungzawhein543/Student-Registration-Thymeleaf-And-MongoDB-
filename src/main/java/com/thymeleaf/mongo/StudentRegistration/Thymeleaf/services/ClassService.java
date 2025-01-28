@@ -5,6 +5,7 @@ import com.thymeleaf.mongo.StudentRegistration.Thymeleaf.repositories.ClassRepos
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClassService {
@@ -25,6 +26,11 @@ public class ClassService {
     // GET ALL CLASS
     public List<Class> findAll() {
         return classRepository.findAll();
+    }
+
+    // GET BY ID
+    public Optional<Class> findById(String id) {
+        return classRepository.findById(id);
     }
 
     // DELETE CLASS WITH ID

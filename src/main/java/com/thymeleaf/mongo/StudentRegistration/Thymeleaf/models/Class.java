@@ -54,10 +54,8 @@ public class Class {
 
     @Override
     public String toString() {
-        return "Class{" +
-                "name='" + name + '\'' +
-                ", startTime=" + startTime +
-                ", endTime=" + endTime +
-                '}';
+        return (name != null ? name : "Unnamed Class") +
+                " (Start: " + (startTime != null ? startTime : "N/A") +
+                ", End: " + (endTime != null ? endTime : "N/A") + ")";
     }
 }

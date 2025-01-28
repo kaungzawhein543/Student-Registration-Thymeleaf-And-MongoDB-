@@ -26,6 +26,7 @@
                     <th>ID</th>
                     <th>NAME</th>
                     <th>BIRTH OF DATE</th>
+                    <th>ATTENDED CLASSES</th>
                     <th>ACTIONS</th>
                 </tr>
                 </thead>
@@ -34,6 +35,14 @@
                     <td th:id="'row-' + (${str.index + 1})" th:text="${str.index + 1}"></td>
                     <td th:text="${student.name}"></td>
                     <td th:text="${student.brith_of_date}"></td>
+                    <td>
+                        <ul th:if="${student.classes != null && !student.classes.isEmpty()}">
+                            <li th:each="class,clsId : ${student.classes}" th:id="'row-' + (${clsId.index + 1})"  th:text="${clsId.index == 0 ? class.name : ',  ' + class.name}"></li>
+                        </ul>
+                        <ul th:if="${student.classes == null || student.classes.isEmpty()}">
+                           <span>N/A</span>
+                        </ul>
+                    </td>
                     <td><a class="action_button" id="dleBtn" th:href="@{/students/deleteStudent/{id}/{name}(id=${student.id}, name=${student.name})}">Delete</a></td>                </tr>
                 </tbody>
             </table>

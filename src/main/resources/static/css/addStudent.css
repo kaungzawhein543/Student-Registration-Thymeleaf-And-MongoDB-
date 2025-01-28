@@ -46,7 +46,7 @@ label {
     color: white;
 }
 
-input[type="text"] {
+input[type="text"] ,input[type="date"]{
     padding: 12px;
     font-size: 14px;
     border-radius: 6px;

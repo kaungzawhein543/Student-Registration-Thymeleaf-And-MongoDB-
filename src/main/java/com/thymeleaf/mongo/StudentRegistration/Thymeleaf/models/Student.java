@@ -62,11 +62,19 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Students{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", brith_of_date='" + brith_of_date + '\'' +
-                ", classes=" + classes.toString() +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Student ID: ").append(id != null ? id : "N/A").append("\n");
+        sb.append("Name: ").append(name != null ? name : "N/A").append("\n");
+        sb.append("Birth Date: ").append(brith_of_date != null ? brith_of_date : "N/A").append("\n");
+        sb.append("Classes: ");
+        if (classes != null && !classes.isEmpty()) {
+            sb.append("\n");
+            for (Class clazz : classes) {
+                sb.append("  - ").append(clazz).append("\n");
+            }
+        } else {
+            sb.append("No classes available\n");
+        }
+        return sb.toString();
     }
 }
