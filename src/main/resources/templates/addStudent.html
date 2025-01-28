@@ -25,7 +25,7 @@
             </div>
             <div>
                 <label for="classes">Attend Classes</label>
-                <select id="classes" multipletatu>
+                <select id="classes" multiple th:field="*{classes}">
                     <option th:each="class : ${classes}" th:value="${class.id}" th:text="${class.name}"></option>
                 </select>
             </div>

@@ -53,6 +53,7 @@ public class StudentController {
     @PostMapping("/add")
     public String addStudentForm(@ModelAttribute Student student, RedirectAttributes redirectAttributes) {
         studentService.addStudent(student);
+        System.out.println(student.toString());
         redirectAttributes.addFlashAttribute("message", "Add Student Successfully.");
         return  "redirect:/students/addStudent";
     }
@@ -86,8 +87,6 @@ public class StudentController {
     }
 
 
-
-
     // UPDATE STUDENT WITH ID
     @PostMapping("/update")
     public Student updateStudent(@RequestBody Student student) {
@@ -110,16 +109,16 @@ public class StudentController {
     }
 
 
-//    @ExceptionHandler(Exception.class)
-//    public ResponseEntity<Map<String, Object>> handleException(Exception e, HttpServletRequest request) {
-//        Map<String, Object> errorDetails = new HashMap<>();
-//        errorDetails.put("timestamp", LocalDateTime.now());
-//        errorDetails.put("status", HttpStatus.INTERNAL_SERVER_ERROR);
-//        errorDetails.put("error","INTERNAL SERVER ERROR");
-//        errorDetails.put("message", e.getMessage());
-//        errorDetails.put("path", request.getRequestURI());
-//        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
+        /*        @ExceptionHandler(Exception.class)
+        public ResponseEntity<Map<String, Object>> handleException(Exception e, HttpServletRequest request) {
+            Map<String, Object> errorDetails = new HashMap<>();
+            errorDetails.put("timestamp", LocalDateTime.now());
+            errorDetails.put("status", HttpStatus.INTERNAL_SERVER_ERROR);
+            errorDetails.put("error","INTERNAL SERVER ERROR");
+            errorDetails.put("message", e.getMessage());
+            errorDetails.put("path", request.getRequestURI());
+            return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+        }*/
 
     @GetMapping("/test")
 

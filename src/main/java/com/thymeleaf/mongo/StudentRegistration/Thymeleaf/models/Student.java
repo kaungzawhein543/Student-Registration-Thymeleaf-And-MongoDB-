@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.List;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,7 +16,7 @@ public class Student {
     private String id;
     private String name;
     private String brith_of_date;
-    private int class_id;
+    private List<Class> classes;
     @Field("locale")  // Ensure this field is mapped correctly
     private String locale;
 
@@ -30,8 +32,8 @@ public class Student {
         return brith_of_date;
     }
 
-    public int getClass_id() {
-        return class_id;
+    public List<Class> getClasses() {
+        return classes;
     }
 
     public void setId(String id) {
@@ -46,8 +48,8 @@ public class Student {
         this.brith_of_date = brith_of_date;
     }
 
-    public void setClass_id(int class_id) {
-        this.class_id = class_id;
+    public void setClasses(List<Class> classes) {
+        this.classes = classes;
     }
 
     public String getLocale() {
@@ -64,7 +66,7 @@ public class Student {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", brith_of_date='" + brith_of_date + '\'' +
-                ", class_id=" + class_id +
+                ", classes=" + classes.toString() +
                 '}';
     }
 }
