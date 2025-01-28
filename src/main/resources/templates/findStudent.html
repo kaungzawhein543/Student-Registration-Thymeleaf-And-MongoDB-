@@ -43,7 +43,11 @@
                            <span>N/A</span>
                         </ul>
                     </td>
-                    <td><a class="action_button" id="dleBtn" th:href="@{/students/deleteStudent/{id}/{name}(id=${student.id}, name=${student.name})}">Delete</a></td>                </tr>
+                    <td>
+                        <a class="action_button upd_btn_color" id="updateBtn" th:href="@{/students/deleteStudent/{id}/{name}(id=${student.id}, name=${student.name})}">Update</a>
+                        <a class="action_button del_btn_color" id="dleBtn" th:href="@{/students/deleteStudent/{id}/{name}(id=${student.id}, name=${student.name})}">Delete</a>
+                    </td>
+                </tr>
                 </tbody>
             </table>
         </div>

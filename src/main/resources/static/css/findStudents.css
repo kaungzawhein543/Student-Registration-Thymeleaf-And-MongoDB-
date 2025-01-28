@@ -47,18 +47,28 @@ table tr:nth-child(2n) {
 table thead > tr {
     background-color : black;
 }
-.action_button {
-    padding: 5px 20px;
+.del_btn_color {
     background-color : #cc1b2f;
     color :white;
+}
+.del_btn_color:hover {
+    background-color : #9e2331;
+}
+.upd_btn_color {
+    background-color : #2656bd;
+    color :white;
+}
+.upd_btn_color:hover {
+    background-color : #194094;
+}
+.action_button {
+    padding: 5px 20px;
     border : none;
     cursor : pointer;
     border-radius : 5px;
     text-decoration : none;
 }
-.action_button:hover {
-    background-color : #9e2331;
-}
+
 table td:last-child {
     with: 100%;
 }
