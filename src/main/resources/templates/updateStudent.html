@@ -27,7 +27,9 @@
             <label>Attend Classes</label>
             <div class="checkboxes-container">
                 <div th:each="class : ${classes}" class="checkBoxClass">
-                    <input type="checkbox" th:id="${class.id}" th:value="${class.id}" th:checked="${student.classes.![id].contains(class.id)}">
+                    <input type="checkbox" th:id="${class.id}" th:name="classes" th:value="${class.id}"
+                           th:checked="${(student.classes != null and not #lists.isEmpty(student.classes)) and
+                            #lists.contains(student.classes.![id], class.id)}">
                     <label th:for="${class.id}" th:text="${class.name}"></label>
                 </div>
             </div>

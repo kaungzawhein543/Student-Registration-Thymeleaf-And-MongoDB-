@@ -27,7 +27,7 @@
                 <label>Attend Classes</label>
                 <div class="checkboxes-container">
                     <div th:each="class : ${classes}" class="checkBoxClass">
-                        <input type="checkbox" th:id="${class.id}" th:value="${class.id}">
+                        <input type="checkbox" th:id="${class.id}" th:value="${class.id}" th:field="*{classes}">
                         <label th:for="${class.id}" th:text="${class.name}"></label>
                     </div>
                 </div>

@@ -44,7 +44,7 @@
                         </ul>
                     </td>
                     <td>
-                        <a class="action_button upd_btn_color" id="updateBtn" th:href="@{/students/deleteStudent/{id}/{name}(id=${student.id}, name=${student.name})}">Update</a>
+                        <a class="action_button upd_btn_color" id="updateBtn" th:href="@{/students/updateStudent/{id}(id=${student.id})}">Update</a>
                         <a class="action_button del_btn_color" id="dleBtn" th:href="@{/students/deleteStudent/{id}/{name}(id=${student.id}, name=${student.name})}">Delete</a>
                     </td>
                 </tr>
