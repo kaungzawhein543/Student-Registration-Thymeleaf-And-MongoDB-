@@ -92,6 +92,10 @@ public class StudentController {
     @PostMapping("/updateStudent/{id}")
     public String updateStudent(@RequestParam("id") String id,Model m) {
         Optional<Student> studentForUpdate = studentService.getStudentsByID(id);
+        List<Class> classes = classService.findAll();
+        if (!classes.isEmpty()) {
+            m.addAttribute("classes",classes);
+        }
         studentForUpdate.ifPresent(student -> m.addAttribute("student", student));
         return "updateStudent";
     }
