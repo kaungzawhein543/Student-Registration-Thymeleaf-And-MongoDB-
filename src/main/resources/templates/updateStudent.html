@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Student</title>
+    <link rel="stylesheet" th:href="@{/css/navbar.css}"/>
+    <link rel="stylesheet" th:href="@{/css/addStudent.css}">
 </head>
 <body>
+<div th:replace="fragments/navbar :: navigationFragment"></div>
+<div class="container">
+    <span th:if="${message}" th:text="${message}" class="msg"></span>
+    <form th:action="@{/students/add}" th:object="${student}" method="post">
+        <div style="text-align: center;">
+            <h3>Update Student Form</h3>
+        </div>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your Name" th:field="*{name}">
+        </div>
+        <div>
+            <label for="name">Birth Of Date</label>
+            <input type="date" id="bithOfdate" th:field="*{brith_of_date}">
+        </div>
+        <div>
+            <label>Attend Classes</label>
+            <div class="checkboxes-container">
+                <div th:each="class : ${classes}" class="checkBoxClass">
+                    <input type="checkbox" th:id="${class.id}" th:value="${class.id}" th:checked="${student.classes.![id].contains(class.id)}">
+                    <label th:for="${class.id}" th:text="${class.name}"></label>
+                </div>
+            </div>
+        </div>
 
+        <button type="submit" class="subtmitbtn">Update Student</button>
+    </form>
+</div>
 </body>
 </html>
