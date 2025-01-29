@@ -11,9 +11,13 @@
 <div th:replace="fragments/navbar :: navigationFragment"></div>
 <div class="container">
     <span th:if="${message}" th:text="${message}" class="msg"></span>
-    <form th:action="@{/students/add}" th:object="${student}" method="post">
+    <span th:if="${errorMessage}" th:text="${errorMessage}" class="errMsg"></span>
+    <form th:action="@{/students/updateStudent}" th:object="${student}" method="POST">
         <div style="text-align: center;">
             <h3>Update Student Form</h3>
+        </div>
+        <div>
+            <input type="hidden" th:name="id" th:value="${student.id}" th:field="*{id}">
         </div>
         <div>
             <label for="name">Name</label>

@@ -54,7 +54,6 @@ public class StudentController {
     @PostMapping("/add")
     public String addStudentForm(@ModelAttribute Student student, RedirectAttributes redirectAttributes) {
         studentService.addStudent(student);
-        System.out.println(student.toString());
         redirectAttributes.addFlashAttribute("message", "Add Student Successfully.");
         return  "redirect:/students/addStudent";
     }
@@ -90,17 +89,38 @@ public class StudentController {
 
     // UPDATE STUDENT WITH ID
     @GetMapping("/updateStudent/{id}")
-    public String updateStudent(@PathVariable("id") String id,Model m) {
+    public String updateStudentPage(@PathVariable("id") String id,Model m) {
         Optional<Student> studentForUpdate = studentService.getStudentsByID(id);
         List<Class> classes = classService.findAll();
         if (!classes.isEmpty()) {
             m.addAttribute("classes",classes);
         }
-        studentForUpdate.ifPresent(student -> m.addAttribute("student", student));
-        System.out.println(studentForUpdate.get());
-        System.out.println(classes);
+        if (studentForUpdate.isPresent()) {
+            m.addAttribute("student",studentForUpdate.get());
+        } else if(m.containsAttribute("student")) {
+            m.addAttribute("student", m.getAttribute("student"));
+        }
         return "updateStudent";
     }
+
+    // DELETE STUDENT WITH ID
+    @PostMapping("updateStudent")
+    public String updateStudent(@ModelAttribute Student student,RedirectAttributes redirectAttributes) {
+        System.out.println(student);
+        Student resultStudent = studentService.updateStudent(student);
+        if (resultStudent != null) {
+            redirectAttributes.addFlashAttribute("message", "Update Student Successfully");
+        } else {
+            redirectAttributes.addFlashAttribute("errorMessage", "Update Student Failed");
+        }
+        redirectAttributes.addFlashAttribute("student",resultStudent);
+        List<Class> classes = classService.findAll();
+        if (!classes.isEmpty()) {
+            redirectAttributes.addFlashAttribute("classes",classes);
+        }
+        return "redirect:/students/updateStudent/"+student.getId();
+    }
+
 
     // DELETE STUDENT WITH ID
     @GetMapping("deleteStudent/{studentId}/{studentName}")
