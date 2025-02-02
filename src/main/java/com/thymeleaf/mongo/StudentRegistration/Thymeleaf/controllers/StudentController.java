@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -34,7 +35,8 @@ public class StudentController {
     }
 
     @GetMapping
-    public String homePage() {
+    public String homePage(@RequestHeader Map<String, String> headers) {
+        headers.forEach((key, value) -> System.out.println(key + " : " + value));
         return "index";
     }
 
